@@ -5,8 +5,8 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "De Beauty Blog - 5 Populaire Foundations Getest",
-  description: "Wij hebben 5 populaire foundations getest – Dit is de verrassende winnaar",
+  title: "De Rijpe Huid – Dermatologie Blog",
+  description: "Dermatoloog Dr. Edith Janssen legt uit waarom May Changing Foundation de optimale keuze is voor vrouwen van 45+.",
 };
 
 export default function RootLayout({
