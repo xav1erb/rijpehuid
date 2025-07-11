@@ -174,18 +174,6 @@ export default function BlogPage() {
 
       {/* Article content */}
       <Section>
-        {/* Product image section */}
-        <div className="flex justify-center mx-auto mb-16" style={{ maxWidth: '720px', marginTop: '40px' }}>
-          <Image
-            src="/May Image 1.png"
-            alt="5 Premium Foundations voor Rijpere Huid"
-            width={720}
-            height={480}
-            className="rounded-lg object-cover"
-            priority
-          />
-        </div>
-
         {/* Intro paragraph */}
         <Heading2>De hype rond foundations – Wat zit erachter?</Heading2>
         <Paragraph>
