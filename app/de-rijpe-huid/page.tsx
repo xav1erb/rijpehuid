@@ -10,10 +10,20 @@ export default function DermatologistBlogPage() {
   return (
     <Layout>
       {/* Header */}
-      <header className="bg-white py-3 px-6 flex justify-center border-b border-gray-200">
-        <Container>
-          <div className="text-center">
-            <h1 className="font-serif text-3xl md:text-4xl font-medium text-gray-800">De Rijpe Huid</h1>
+      <header className="bg-[#e9c7c0] py-3 px-6 flex items-center border-b border-gray-200">
+        <Container className="max-w-none px-0">
+          <div className="flex items-center">
+            {/* Inline SVG logo: cross in a circle */}
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2">
+              <circle cx="16" cy="16" r="14" stroke="#222" strokeWidth="2" fill="none" />
+              <rect x="14.25" y="9" width="3.5" height="14" rx="1" fill="none" stroke="#222" strokeWidth="2" />
+              <rect x="9" y="14.25" width="14" height="3.5" rx="1" fill="none" stroke="#222" strokeWidth="2" />
+            </svg>
+            <span className="text-2xl font-serif font-semibold select-none">
+              <span className="text-black">De</span>
+              <span className="text-[#7d1818]">Rijpe</span>
+              <span className="text-black">Huid.nl</span>
+            </span>
           </div>
         </Container>
       </header>
@@ -24,11 +34,11 @@ export default function DermatologistBlogPage() {
           {/* Text */}
           <div className="flex-1 order-1 text-center md:text-left">
             <h3 className="text-2xl md:text-4xl font-extrabold leading-tight mb-4">
-              8 Redenen waarom dermatologen kiezen voor <br className="hidden md:block" />
-              <span className="underline decoration-4 decoration-[#0E4F5C]">Changing&nbsp;Foundation</span>
+              8 Redenen waarom ik als dermatoloog <br className="hidden md:block" />
+              <span className="underline decoration-4 decoration-[#0E4F5C]">Changing&nbsp;Foundation</span> aanraad
             </h3>
             <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-[520px] md:max-w-none mx-auto md:mx-0">
-              Als dermatoloog zie ik dagelijks hoe vrouwen van 45+ worstelen met make-up die in lijntjes kruipt of de huid uitdroogt. Ontdek hieronder hoe één slimme, kleur­adaptieve formule het spel verandert.
+              Ik zie het elke dag in mijn praktijk: vrouwen die worstelen met foundation die in hun lijntjes kruipt, hun huid uitdroogt of hen er moe uit laat zien. Daarom deel ik graag waarom dit product anders is.
             </p>
           </div>
 
@@ -55,36 +65,36 @@ export default function DermatologistBlogPage() {
         <div className="max-w-[980px] mx-auto px-4">
           {[
             {
-              title: "Past zich binnen 2 minuten aan jouw huidtint aan",
-              text: "De formule bevat micro-ingekapselde pigmenten die pas openen wanneer ze in contact komen met zuurstof én de natuurlijke pH van je huid. Hierdoor zie je de bekende \"masker-lijn\" aan je kaakrand letterlijk vervagen binnen twee minuten. Het resultaat is een onzichtbare overgang, zelfs in daglicht."
+              title: "Binnen enkele seconden exact de juiste teint.",
+              text: `De formule van deze foundation is uniek en bevat de geavanceerde DermaTone-technologie. Zodra de foundation in contact komt met je huid, past de kleur zich automatisch aan jouw natuurlijke huidskleur aan. Dit komt doordat iedere huid een eigen, unieke pH-waarde heeft. De slimme pigmenten in de formule reageren hierop en zorgen ervoor dat je altijd de juiste tint draagt. Het resultaat is een perfect egale look, zonder kleurverschillen of zichtbare overgangen.`
             },
             {
-              title: "Direct ‘micro-lift’ zonder injecties of fillers",
-              text: "Een gepatenteerd tripeptiden-complex stimuleert de contractie van collageenvezels in de bovenste dermale laag. In een in-vivo test (n = 52) rapporteerde 87 % van de deelnemers een zichtbaar strakkere huid na 5 minuten – volledig pijnloos en zonder hersteltijd."
+              title: "Actief collageencomplex voor een zichtbaar stevigere huid",
+              text: `Een speciaal tripeptiden-complex helpt de collageenvezels in je huid om samen te trekken, wat zorgt voor een stevigere en strakkere uitstraling. Zonder injecties, zonder hersteltijd. Uit een gebruikerstest bleek dat 87% van de deelnemers na één maand een zichtbaar gladdere en strakkere huid ervaarde – helemaal pijnloos en veilig.`
             },
             {
-              title: "12 uur lang klinisch bewezen hydratatie",
-              text: "Sodium PCA, hyaluronzuur met laag moleculair gewicht en beta-glucan vormen samen een ‘vochtmagneet’. Dit verlaagt transepidermaal waterverlies met 28 % en voorkomt schilfertjes, waardoor de foundation niet in fijne lijntjes kruipt, zelfs niet in een verwarmde of droge omgeving." 
+              title: "Geen droge, schilferende huid meer",
+              text: "Veel foundation droogt je huid uit, vooral na een paar uur. Deze doet precies het tegenovergestelde – het houdt vocht vast en voorkomt dat je huid uitdroogt. Zelfs na 12 uur voelt je huid nog comfortabel aan. Geen irriterende schilfertjes of het gevoel dat je huid 'strak' staat." 
             },
             {
-              title: "Breed-spectrum SPF 30 tegen foto-veroudering",
-              text: "Dermatologen weten dat UV-A de belangrijkste oorzaak is van elastine-afbraak. De ingewerkte niet-nano zink- en titaandioxide filteren zowel UV-A als UV-B, zodat je elke dag automatisch een basale zonbescherming hebt — een must voor het voorkomen van pigmentvlekken en nieuwe rimpels." 
+              title: "Voorkomt  huidveroudering met SPF 15",
+              text: `Deze foundation bevat SPF 30 en beschermt je huid dagelijks tegen de zon. Dankzij veilige, niet-nano zink- en titaandioxide filters ben je beschermd tegen zowel UV-A als UV-B straling. Zo help je huidveroudering, pigmentvlekken en fijne lijntjes te voorkomen – zonder dat je extra zonnebrand hoeft te gebruiken.`
             },
             {
-              title: "-37 % rimpeldiepte in vier weken (dubbelblind)",
-              text: "Tijdens een gecontroleerde split-face studie met 32 vrouwen van 45–65 jaar werd een gemiddelde daling van de rimpeldiepte met 37 % gemeten via 3D-profilometrie. Deze resultaten bevestigen dat de foundation niet alleen camoufleert, maar ook actief huidverbeterend werkt." 
+              title: "Minder zichtbare rimpels dankzij collageen-boost",
+              text: `Deze foundation doet meer dan alleen je huid egaliseren. Dankzij een actief collageenstimulerend complex helpt de formule fijne lijntjes en rimpels van binnenuit te verminderen. In een studie met vrouwen tussen de 45 en 65 jaar werd na vier weken een gemiddelde afname van 37% in rimpeldiepte gemeten. Het resultaat: een gladdere, stevigere huid die er jonger uitziet – elke dag opnieuw.`
             },
             {
-              title: "Luchtig, niet-comedogeen en parfumvrij",
-              text: "De basis is olie- en alcoholvrij en bevat geen verstikkende siliconen. Hierdoor blijven poriën vrij en is het risico op milia of acne bij volwassen huid minimaal. Ideaal voor vrouwen die regelmatig producten met retinol of AHA’s gebruiken." 
+              title: "Licht voor je huid, zonder parfum of verstoppende ingrediënten",
+              text: `Deze foundation is luchtig en laat je huid ademen. Hij bevat geen olie, alcohol of verstikkende siliconen, en is volledig parfumvrij. Daardoor is hij ook geschikt voor de gevoelige of volwassen huid die snel reageert of last heeft van onzuiverheden. Perfect in combinatie met huidverzorging met retinol of zuren zoals AHA’s.`
             },
             {
-              title: "Ultrazachte formule voor de gevoelige rijpere huid",
-              text: "De foundation is hypoallergeen, vrij van microplastics en micro‐doserende conserveermiddelen. Elk batch­nummer wordt patch-getest op 100 vrijwilligers; tot nu toe zonder meldingen van irritatie. Daardoor vertrouwen ook dermatologen met rosacea-patiënten deze formule." 
+              title: "Geschikt voor de gevoelige rijpere huid",
+              text: "Je huid wordt gevoeliger naarmate je ouder wordt. Deze foundation is daarom extra zacht geformuleerd, zonder agressieve stoffen die irritatie kunnen veroorzaken. Zelfs mijn patiënten met rosacea kunnen het meestal goed verdragen – iets wat ik niet van alle foundations kan zeggen."
             },
             {
-              title: "Optische correctie van roodheid en hyperpigmentatie",
-              text: "Licht-diffuserende mica-platelets breken licht in meerdere richtingen en neutraliseren zo direct oppervlakkige roodheid. Gecombineerd met soft-focus mineralen smelten donkere vlekjes visueel weg — vaak is concealer overbodig." 
+              title: "Camoufleert roodheid en vlekjes natuurlijk",
+              text: "In plaats van alles onder een dikke laag te verstoppen, zorgt deze foundation ervoor dat roodheid en donkere vlekjes optisch vervagen. Het resultaat ziet er natuurlijk uit – alsof je gewoon een mooie huid hebt. Vaak heb je geen concealer meer nodig."
             }
           ].map((reason, idx) => (
             <div
@@ -94,7 +104,7 @@ export default function DermatologistBlogPage() {
             >
               {/* Text */}
               <div className="flex-1">
-                <Heading2>{`${idx + 1}. ${reason.title}`}</Heading2>
+                <h4 className="font-bold font-serif mb-2 text-xl md:text-2xl">{`${idx + 1}. ${reason.title}`}</h4>
                 <Paragraph className="text-gray-700 mt-2">{reason.text}</Paragraph>
               </div>
             </div>
@@ -107,7 +117,7 @@ export default function DermatologistBlogPage() {
         <Container className="max-w-[860px] mx-auto px-4 flex flex-col md:flex-row items-center gap-6">
           <Image src="/Esther.png" alt="Dr. Edith Janssen" width={100} height={100} className="rounded-full border-2 border-white" />
           <blockquote className="text-xl md:text-2xl font-semibold leading-snug text-[#0E4F5C]">
-            “Goede make-up hoort niet alleen te verbergen, maar ook te verzorgen. Daarom raad ik Changing Foundation aan – het is huid­verzorging en make-up in één.”
+            "Goede make-up hoort je huid te verzorgen, niet te verstoppen. Daarom raad ik Changing Foundation aan – het is een van de weinige producten die echt doet wat het belooft."
             <footer className="block mt-3 text-base font-normal text-gray-700">— Dr. Edith Janssen, Dermatoloog</footer>
           </blockquote>
         </Container>
@@ -118,9 +128,9 @@ export default function DermatologistBlogPage() {
         <Container className="max-w-[1000px] mx-auto px-4 flex flex-col lg:flex-row items-center gap-10">
           <Image src="/may-transparant.png" alt="May Changing Foundation" width={280} height={400} className="rounded-lg object-contain" />
           <div className="flex-1 text-center lg:text-left">
-            <h2 className="text-3xl font-bold mb-4">Ervaar het verschil binnen 2&nbsp;minuten</h2>
+            <h2 className="text-3xl font-bold mb-4">Ervaar het verschil binnen enkele seconden</h2>
             <p className="text-lg mb-6 max-w-md mx-auto lg:mx-0">
-              Grijp je kans op <strong>40&nbsp;% launch-korting</strong> en een gratis luxe kwast. Niet goed? Geld terug binnen 60 dagen.
+              Profiteer van 40% zomer korting. Niet tevreden? Binnen 30 dagen geld terug.
             </p>
             <Button href="https://maycosmetics.nl/products/changing-foundation" className="bg-white text-[#0E4F5C] hover:bg-[#f2f2f2]">
               Bestel Nu – Beperkte Voorraad
