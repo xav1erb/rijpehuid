@@ -42,7 +42,7 @@ export default function DermatologistBlogPage() {
 
             {/* Image */}
             <div className="flex-1 order-2">
-              <Image src="/Dermatology.png" alt="Dermatoloog met foundation flacon" width={520} height={640} className="rounded-xl object-contain mx-auto" priority />
+              <Image src="/dermatoloog.png" alt="Dermatoloog met foundation flacon" width={520} height={640} className="rounded-xl object-contain mx-auto" priority />
             </div>
           </Container>
         </section>
@@ -76,7 +76,7 @@ export default function DermatologistBlogPage() {
               },
               {
                 title: "Voorkomt  huidveroudering met SPF 15",
-                text: `Deze foundation bevat SPF 30 en beschermt je huid dagelijks tegen de zon. Dankzij veilige, niet-nano zink- en titaandioxide filters ben je beschermd tegen zowel UV-A als UV-B straling. Zo help je huidveroudering, pigmentvlekken en fijne lijntjes te voorkomen – zonder dat je extra zonnebrand hoeft te gebruiken.`
+                text: `Deze foundation bevat SPF 15 en beschermt je huid dagelijks tegen de zon. Dankzij veilige, niet-nano zink- en titaandioxide filters ben je beschermd tegen zowel UV-A als UV-B straling. Zo help je huidveroudering, pigmentvlekken en fijne lijntjes te voorkomen – zonder dat je extra zonnebrand hoeft te gebruiken.`
               },
               {
                 title: "Minder zichtbare rimpels dankzij collageen-boost",
@@ -130,7 +130,7 @@ export default function DermatologistBlogPage() {
               <p className="text-lg mb-6 max-w-md mx-auto lg:mx-0">
                 Profiteer van 40% zomer korting. Niet tevreden? Binnen 30 dagen geld terug.
               </p>
-              <Button href="https://maycosmetics.nl/products/changing-foundation" className="bg-white text-[#0E4F5C] hover:bg-[#f2f2f2]">
+              <Button href="https://maycosmetics.nl/products/may-changing-foundation" className="bg-white text-[#0E4F5C] hover:bg-[#f2f2f2]" target="_blank" rel="noopener noreferrer">
                 Bestel Nu – Beperkte Voorraad
               </Button>
             </div>
