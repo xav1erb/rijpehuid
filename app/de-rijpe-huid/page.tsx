@@ -130,7 +130,7 @@ export default function DermatologistBlogPage() {
               <p className="text-lg mb-6 max-w-md mx-auto lg:mx-0">
                 Profiteer van 40% zomer korting. Niet tevreden? Binnen 30 dagen geld terug.
               </p>
-              <Button href="https://maycosmetics.nl/products/may-changing-foundation" className="bg-white text-[#0E4F5C] hover:bg-[#f2f2f2]" target="_blank" rel="noopener noreferrer">
+              <Button href="https://maycosmetics.nl/products/may-changing-foundation" className="bg-white text-[#0E4F5C] hover:bg-[#f2f2f2]">
                 Bestel Nu – Beperkte Voorraad
               </Button>
             </div>
