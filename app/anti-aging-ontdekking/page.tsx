@@ -7,6 +7,8 @@ import { Layout, Section, ContentBlock } from "../components/layout/Layout";
 import { Heading1, Heading2, Heading3, Paragraph, SmallText, Highlight } from "../components/ui/Typography";
 import { useEffect, useState } from "react";
 
+
+
 export default function AntiAgingOntdekkingPage() {
   const [countdown, setCountdown] = useState({
     hours: 0,
@@ -382,7 +384,7 @@ export default function AntiAgingOntdekkingPage() {
                 </div>
               </div>
 
-              <a href="https://maycosmetics.nl/products/changing-foundation" target="_blank" rel="noopener noreferrer">
+              <a href="https://maycosmetics.nl/products/may-changing-foundation" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 text-base font-bold rounded-lg font-sans">
                   👉 Bestel nu met korting (tijdelijk aanbod!)
                 </Button>
