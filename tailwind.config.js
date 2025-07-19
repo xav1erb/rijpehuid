@@ -17,7 +17,7 @@ module.exports = {
       },
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'Open Sans', 'sans-serif'],
+        sans: ['Arial', 'sans-serif'],
       },
       fontSize: {
         base: '18px',
