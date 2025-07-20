@@ -87,7 +87,7 @@ export default function DermatologistBlogPage() {
       {/* Author */}
       <Container className="max-w-[960px] mx-auto px-4 -mt-12">
         <div className="bg-white shadow-sm rounded-md p-3 flex items-center gap-3 max-w-[320px] mx-auto">
-          <Image src="/Esther.png" alt="Dr. Edith Janssen" width={60} height={60} className="rounded-full border-2 border-gray-100" />
+          <Image src="/Marijke.png" alt="Dr. Edith Janssen" width={60} height={60} className="rounded-full border-2 border-gray-100" />
           <div>
             <p className="font-bold text-black text-lg mb-1">Dr. Edith Janssen</p>
             <p className="text-gray-700 text-sm leading-relaxed mb-0">20+ jaar dermatoloog</p>
@@ -110,7 +110,7 @@ export default function DermatologistBlogPage() {
       {/* Quote Banner */}
       <Section className="bg-[#e3eef0] py-10">
         <Container className="max-w-[860px] mx-auto px-4 flex flex-col md:flex-row items-center gap-6">
-          <Image src="/Esther.png" alt="Dr. Edith Janssen" width={100} height={100} className="rounded-full border-2 border-white" />
+          <Image src="/Marijke.png" alt="Dr. Edith Janssen" width={100} height={100} className="rounded-full border-2 border-white" />
           <blockquote className="text-xl md:text-2xl font-semibold leading-snug text-[#0E4F5C]">
             "Goede make-up hoort je huid te verzorgen, niet te verstoppen. Daarom raad ik Changing Foundation aan – het is een van de weinige producten die echt doet wat het belooft."
             <footer className="block mt-3 text-base font-normal text-gray-700">— Dr. Edith Janssen, Dermatoloog</footer>
