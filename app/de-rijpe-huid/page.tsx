@@ -97,13 +97,76 @@ export default function DermatologistBlogPage() {
       {/* Main Content – alternating reason cards */}
       <Section>
         <div className="max-w-[980px] mx-auto px-4">
-            {reasons.map((reason, idx) => (
+            {reasons.slice(0, 2).map((reason, idx) => (
               <div key={idx} className={`flex flex-col md:flex-row items-center gap-8 my-8 ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
               <div className="flex-1">
                   <h4 className="font-bold font-serif mb-2 text-xl md:text-2xl">{`${idx + 1}. ${reason.title}`}</h4>
                 <Paragraph className="text-gray-700 mt-2">{reason.text}</Paragraph>
               </div>
             </div>
+          ))}
+          
+          {/* Before/After Images Grid */}
+          <div className="my-16 py-8 bg-[#fefaf8] rounded-lg border border-gray-100">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">Zie het verschil zelf</h3>
+              <p className="text-gray-600">Echte resultaten van vrouwen die Changing Foundation gebruiken</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 px-6">
+              <div className="text-center">
+                <Image 
+                  src="/Before-After1.jpg" 
+                  alt="Voor en na vergelijking - resultaat 1" 
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-md mx-auto mb-4"
+                />
+                <div className="flex justify-center gap-12 text-sm font-semibold text-gray-700">
+                  <span>Voor</span>
+                  <span>Na</span>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">4 weken gebruik</p>
+              </div>
+              
+              <div className="text-center">
+                <Image 
+                  src="/Before-After2.jpg" 
+                  alt="Voor en na vergelijking - resultaat 2" 
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-md mx-auto mb-4"
+                />
+                <div className="flex justify-center gap-12 text-sm font-semibold text-gray-700">
+                  <span>Voor</span>
+                  <span>Na</span>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">6 weken gebruik</p>
+              </div>
+            </div>
+          </div>
+
+            {reasons.slice(2).map((reason, idx) => (
+              <div key={idx + 2}>
+                <div className={`flex flex-col md:flex-row items-center gap-8 my-8 ${(idx + 2) % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                  <div className="flex-1">
+                    <h4 className="font-bold font-serif mb-2 text-xl md:text-2xl">{`${idx + 3}. ${reason.title}`}</h4>
+                    <Paragraph className="text-gray-700 mt-2">{reason.text}</Paragraph>
+                  </div>
+                </div>
+                
+                {/* Additional Before/After Image after point 4 */}
+                {idx === 1 && (
+                  <div className="text-center my-12">
+                    <Image 
+                      src="/Before-After3.jpg" 
+                      alt="Voor en na vergelijking" 
+                      width={400}
+                      height={300}
+                      className="mx-auto"
+                    />
+                  </div>
+                )}
+              </div>
           ))}
         </div>
       </Section>
@@ -119,7 +182,7 @@ export default function DermatologistBlogPage() {
       </Section>
 
       {/* CTA Footer */}
-      <Section className="bg-[#0E4F5C] py-14 text-white">
+      <Section id="cta-section" className="bg-[#0E4F5C] py-14 text-white">
         <Container className="max-w-[1000px] mx-auto px-4 flex flex-col lg:flex-row items-center gap-10">
           <Image src="/may-transparant.png" alt="May Changing Foundation" width={280} height={400} className="rounded-lg object-contain" />
           <div className="flex-1 text-center lg:text-left">
@@ -127,6 +190,14 @@ export default function DermatologistBlogPage() {
             <p className="text-lg mb-6 max-w-md mx-auto lg:mx-0">
               Profiteer van 40% zomer korting. Niet tevreden? Binnen 30 dagen geld terug.
             </p>
+            <div className="flex items-center gap-3 mb-6 max-w-md mx-auto lg:mx-0">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-lg">★</span>
+                ))}
+              </div>
+              <span className="text-sm text-gray-300">30.000+ tevreden vrouwen gingen je voor</span>
+            </div>
             <Button href="https://maycosmetics.nl/products/may-changing-foundation" className="bg-white text-[#0E4F5C] hover:bg-[#f2f2f2]">
               Bestel Nu – Beperkte Voorraad
             </Button>
