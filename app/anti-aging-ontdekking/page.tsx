@@ -130,9 +130,15 @@ export default function AntiAgingOntdekkingPage() {
       {/* Partners bar */}
       <div className="w-full font-sans" style={{ background: '#e9c7c0' }}>
         <div className="max-w-[960px] mx-auto px-6 py-2">
-          <p className="text-black font-sans">
-            <em>Partners:</em> plaats hier consumentebond en nog wat partijen...
-          </p>
+          <div className="flex flex-wrap items-center gap-4 text-black font-sans">
+            <span className="text-black font-sans">
+              <em>Partners:</em>
+            </span>
+            <span className="font-bold text-sm tracking-wide">HUIDKLINIEK BERG HILVERSUM</span>
+            <span className="text-lg font-medium italic">De Rijpe Huid</span>
+            <span className="font-semibold text-base uppercase text-gray-800">Het Beste Voor De Huid</span>
+            <span className="font-light text-sm tracking-widest">MEDISCH ADVIES CAROLIEN</span>
+          </div>
         </div>
       </div>
 
