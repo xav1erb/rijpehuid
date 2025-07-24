@@ -182,7 +182,7 @@ export default function DermatologistBlogPage() {
       </Section>
 
       {/* CTA Footer */}
-      <Section id="cta-section" className="bg-[#0E4F5C] py-14 text-white">
+      <section id="cta-section" className="bg-[#0E4F5C] py-14 text-white">
         <Container className="max-w-[1000px] mx-auto px-4 flex flex-col lg:flex-row items-center gap-10">
           <Image src="/may-transparant.png" alt="May Changing Foundation" width={280} height={400} className="rounded-lg object-contain" />
           <div className="flex-1 text-center lg:text-left">
@@ -203,7 +203,7 @@ export default function DermatologistBlogPage() {
             </Button>
           </div>
         </Container>
-      </Section>
+      </section>
     </Layout>
     </>
   );
