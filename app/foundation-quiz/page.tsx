@@ -139,7 +139,7 @@ const questions: Question[] = [
 const foundationRecommendations = [
   {
     rank: 1,
-    name: "MAY. Changing Foundation SPF 15",
+    name: "MAY. Changing Foundation",
     description: "De perfecte match voor jouw huid! Deze innovatieve foundation past zich automatisch aan jouw huidkleur aan en biedt langdurige dekking zonder zwaar aan te voelen.",
     image: "/may-transparant.png",
     price: "€24,95",
@@ -153,7 +153,7 @@ const foundationRecommendations = [
       "Geschikt voor rijpere huid",
       "Kruipt niet in lijntjes"
     ],
-    cta: "Bestel nu met 40% korting!",
+    cta: "Bestel nu met 30% korting!",
     link: "https://maycosmetics.nl/products/may-changing-foundation"
   },
   {
@@ -296,8 +296,8 @@ export default function FoundationQuizPage() {
                 }`}
               >
                 {foundation.rank === 1 && (
-                  <div className="absolute top-0 right-0 bg-green-500 text-white px-6 py-2 rounded-bl-2xl font-bold">
-                    🏆 PERFECT MATCH
+                  <div className="absolute top-0 right-0 bg-green-500 text-white px-4 py-1 rounded-bl-lg font-bold text-sm">
+                    🏆 PERFECTE MATCH
                   </div>
                 )}
                 
@@ -386,8 +386,9 @@ export default function FoundationQuizPage() {
                               ? 'bg-green-600 hover:bg-green-700 text-white transform hover:scale-105'
                               : 'bg-gray-800 hover:bg-gray-900 text-white'
                           }`}
+                          style={{ color: 'white !important' }}
                         >
-                          {foundation.cta}
+                          <span className="text-white">{foundation.cta}</span>
                         </a>
                       </div>
                     </div>
