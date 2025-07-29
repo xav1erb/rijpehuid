@@ -15,9 +15,11 @@ interface Question {
   id: number;
   question: string;
   subtitle?: string;
+  hasImages?: boolean;
   options: Array<{
     text: string;
     value: string;
+    image?: string;
   }>;
 }
 
@@ -68,11 +70,11 @@ const questions: Question[] = [
     id: 5,
     question: "Hoe zou je de huidige staat van je huid omschrijven?",
     subtitle: "Wees eerlijk - dit helpt ons de perfecte match te vinden!",
+    hasImages: true,
     options: [
-      { text: "Glad en strak, minimale lijntjes zichtbaar", value: "minimal-wrinkles" },
-      { text: "Wat fijne lijntjes rond ogen en mond", value: "fine-lines" },
-      { text: "Duidelijke rimpels en wat verlies van stevigheid", value: "moderate-wrinkles" },
-      { text: "Veel rimpels en zichtbaar verlies van elasticiteit", value: "significant-wrinkles" }
+      { text: "Glad en strak, minimale lijntjes", value: "minimal-wrinkles", image: "/160.png" },
+      { text: "Wat fijne lijntjes rond ogen en mond", value: "fine-lines", image: "/161.png" },
+      { text: "Duidelijke rimpels en verlies van stevigheid", value: "moderate-wrinkles", image: "/162.png" }
     ]
   },
   {
@@ -489,24 +491,53 @@ export default function FoundationQuizPage() {
               </p>
             )}
 
-            <div className="space-y-4">
-              {questions[currentQuestion].options.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleAnswer(option.text, option.value)}
-                  className="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-900 font-medium group-hover:text-green-700">
-                      {option.text}
-                    </span>
-                    <span className="text-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      →
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
+            {/* Image-based options for skin condition question */}
+            {questions[currentQuestion].hasImages ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {questions[currentQuestion].options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswer(option.text, option.value)}
+                    className="flex flex-col items-center p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transform hover:scale-105"
+                  >
+                    <div className="w-full h-48 mb-4 rounded-lg overflow-hidden">
+                      <Image
+                        src={option.image!}
+                        alt={option.text}
+                        width={200}
+                        height={200}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="bg-white p-3 rounded-lg border border-gray-100 w-full text-center">
+                      <span className="text-gray-900 font-medium text-sm group-hover:text-green-700">
+                        {option.text}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              /* Regular text-based options */
+              <div className="space-y-4">
+                {questions[currentQuestion].options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswer(option.text, option.value)}
+                    className="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-900 font-medium group-hover:text-green-700">
+                        {option.text}
+                      </span>
+                      <span className="text-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        →
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Navigation */}
