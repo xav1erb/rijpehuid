@@ -66,6 +66,17 @@ const questions: Question[] = [
   },
   {
     id: 5,
+    question: "Hoe zou je de huidige staat van je huid omschrijven?",
+    subtitle: "Wees eerlijk - dit helpt ons de perfecte match te vinden!",
+    options: [
+      { text: "Glad en strak, minimale lijntjes zichtbaar", value: "minimal-wrinkles" },
+      { text: "Wat fijne lijntjes rond ogen en mond", value: "fine-lines" },
+      { text: "Duidelijke rimpels en wat verlies van stevigheid", value: "moderate-wrinkles" },
+      { text: "Veel rimpels en zichtbaar verlies van elasticiteit", value: "significant-wrinkles" }
+    ]
+  },
+  {
+    id: 6,
     question: "Hoe belangrijk is huidverzorging voor jou in je make-up routine?",
     options: [
       { text: "Superbelangrijk, het moet verzorgend zijn", value: "very-important" },
@@ -74,7 +85,7 @@ const questions: Question[] = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     question: "Wat wil je bereiken met je make-up look?",
     options: [
       { text: "Een natuurlijke uitstraling", value: "natural" },
@@ -84,7 +95,7 @@ const questions: Question[] = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     question: "Hoe vaak verander je van foundation?",
     options: [
       { text: "Elke paar maanden", value: "frequently" },
@@ -93,7 +104,7 @@ const questions: Question[] = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     question: "Wat zou jouw droom-foundation voor jou doen?",
     options: [
       { text: "De juiste teint bieden", value: "right-shade" },
@@ -103,7 +114,7 @@ const questions: Question[] = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     question: "Hoeveel geef je meestal uit aan een foundation?",
     subtitle: "Zodat we iets kunnen adviseren dat bij jouw budget past",
     options: [
@@ -114,7 +125,7 @@ const questions: Question[] = [
     ]
   },
   {
-    id: 10,
+    id: 11,
     question: "Als je in de spiegel kijkt, wat zou je het liefst willen zien?",
     subtitle: "Even helemaal eerlijk naar jezelf kijken.",
     options: [
@@ -131,9 +142,9 @@ const foundationRecommendations = [
     name: "MAY. Changing Foundation SPF 15",
     description: "De perfecte match voor jouw huid! Deze innovatieve foundation past zich automatisch aan jouw huidkleur aan en biedt langdurige dekking zonder zwaar aan te voelen.",
     image: "/may-transparant.png",
-    price: "€29,95",
-    originalPrice: "€49,95",
-    discount: "40%",
+    price: "€24,95",
+    originalPrice: "€34,95",
+    discount: "30%",
     rating: "9.2/10",
     features: [
       "Zelfaanpassende kleur technologie",
