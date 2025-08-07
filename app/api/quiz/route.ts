@@ -13,33 +13,43 @@ export async function POST(req: Request) {
   try {
     const data = await req.json();
     
+    // Validate required data
+    if (!data || typeof data !== 'object') {
+      return NextResponse.json({ success: false, error: 'Invalid request data' }, { status: 400 });
+    }
+    
     // Check if Supabase is configured
     if (!supabase) {
       console.log('Supabase not configured, skipping data save');
       return NextResponse.json({ success: true, message: 'Supabase not configured' });
     }
     
+    // Prepare the quiz response data
+    const quizResponse = {
+      age: data.age || null,
+      frustration: data.frustration || null,
+      skin_type: data.skinType || null,
+      skin_condition: data.skinCondition || null,
+      budget: data.budget || null,
+      referrer: data.referrer || null,
+      completed: data.completed || false
+    };
+
     // Save to Supabase
-    const { error } = await supabase
+    const { data: insertedData, error } = await supabase
       .from('quiz_responses')
-      .insert({
-        age: data.age,
-        frustration: data.frustration,
-        skin_type: data.skinType,
-        skin_condition: data.skinCondition,
-        budget: data.budget,
-        referrer: data.referrer || '',
-        completed: true
-      });
+      .insert(quizResponse)
+      .select();
 
     if (error) {
       console.error('Supabase error:', error);
       throw new Error(error.message);
     }
 
-    return NextResponse.json({ success: true });
+    console.log('Quiz response saved successfully:', insertedData?.[0]?.id);
+    return NextResponse.json({ success: true, id: insertedData?.[0]?.id });
   } catch (error) {
-    console.error('Failed to save:', error);
+    console.error('Failed to save quiz response:', error);
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
     return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
   }

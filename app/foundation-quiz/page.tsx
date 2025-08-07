@@ -197,33 +197,39 @@ export default function FoundationQuizPage() {
         // Get all answers in the correct order
         const allAnswers = questions.map(q => {
           const answer = updatedAnswers.find(a => a.questionId === q.id);
-          return answer?.value || '';
+          return answer?.value || null;
         });
+
+        const quizData = {
+          age: allAnswers[0],             // Age category
+          frustration: allAnswers[1],     // Foundation frustration
+          skinType: allAnswers[2],        // Skin type
+          skinCondition: allAnswers[3],   // Skin condition
+          budget: allAnswers[4],          // Budget
+          referrer: typeof document !== 'undefined' ? document.referrer : null,
+          completed: true
+        };
 
         const response = await fetch('/api/quiz', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            age: allAnswers[0],             // Age category
-            frustration: allAnswers[1],     // Foundation frustration
-            skinType: allAnswers[2],        // Skin type
-            skinCondition: allAnswers[3],   // Skin condition
-            budget: allAnswers[4],          // Budget
-            referrer: document.referrer
-          })
+          body: JSON.stringify(quizData)
         });
 
         if (!response.ok) {
-          throw new Error('Failed to save quiz answers');
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
         }
 
         const result = await response.json();
         if (!result.success) {
           throw new Error(result.error || 'Failed to save quiz answers');
         }
+
+        console.log('Quiz completed and saved successfully:', result.id);
       } catch (error) {
-        console.error('Failed to save answers:', error);
-        // Optionally show an error message to the user, but still continue to results
+        console.error('Failed to save quiz answers:', error);
+        // Continue to results even if save fails - user experience is priority
       }
     }
 
