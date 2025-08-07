@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "../components/ui/Button";
 import { Container } from "../components/layout/Container";
 import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface QuizAnswer {
   questionId: number;
@@ -23,6 +24,7 @@ interface Question {
   }>;
 }
 
+// Reduced to 5 most important questions for better conversion
 const questions: Question[] = [
   {
     id: 1,
@@ -39,6 +41,7 @@ const questions: Question[] = [
   {
     id: 2,
     question: "Wat is jouw grootste frustratie met foundation?",
+    subtitle: "Dit helpt ons de perfecte oplossing voor jou te vinden!",
     options: [
       { text: "Het blijft niet goed zitten", value: "durability" },
       { text: "De kleur past nooit perfect", value: "color-match" },
@@ -58,16 +61,6 @@ const questions: Question[] = [
   },
   {
     id: 4,
-    question: "Hoe voelt jouw huidige foundation aan op je huid?",
-    options: [
-      { text: "Droog en trekkerig", value: "dry-tight" },
-      { text: "Vet en glanzend", value: "oily-shiny" },
-      { text: "Te zwaar", value: "too-heavy" },
-      { text: "Prima, maar het kan beter", value: "okay" }
-    ]
-  },
-  {
-    id: 5,
     question: "Hoe zou je de huidige staat van je huid omschrijven?",
     subtitle: "Wees eerlijk - dit helpt ons de perfecte match te vinden!",
     hasImages: true,
@@ -78,45 +71,7 @@ const questions: Question[] = [
     ]
   },
   {
-    id: 6,
-    question: "Hoe belangrijk is huidverzorging voor jou in je make-up routine?",
-    options: [
-      { text: "Superbelangrijk, het moet verzorgend zijn", value: "very-important" },
-      { text: "Prima als extraatje", value: "nice-to-have" },
-      { text: "Niet zo belangrijk", value: "not-important" }
-    ]
-  },
-  {
-    id: 7,
-    question: "Wat wil je bereiken met je make-up look?",
-    options: [
-      { text: "Een natuurlijke uitstraling", value: "natural" },
-      { text: "Een flawless, airbrushed look", value: "flawless" },
-      { text: "Minder zichtbare roodheid of onzuiverheden", value: "coverage" },
-      { text: "Een zware make up look", value: "heavy-makeup" }
-    ]
-  },
-  {
-    id: 8,
-    question: "Hoe vaak verander je van foundation?",
-    options: [
-      { text: "Elke paar maanden", value: "frequently" },
-      { text: "Alleen als het echt niet meer werkt", value: "rarely" },
-      { text: "Ik heb nog nooit echt mijn match gevonden", value: "never-found" }
-    ]
-  },
-  {
-    id: 9,
-    question: "Wat zou jouw droom-foundation voor jou doen?",
-    options: [
-      { text: "De juiste teint bieden", value: "right-shade" },
-      { text: "Mijn huid verbeteren én mooi maken", value: "improve-skin" },
-      { text: "Me laten stralen zonder plamuur-effect", value: "natural-glow" },
-      { text: "Alle bovenstaande", value: "all-above" }
-    ]
-  },
-  {
-    id: 10,
+    id: 5,
     question: "Hoeveel geef je meestal uit aan een foundation?",
     subtitle: "Zodat we iets kunnen adviseren dat bij jouw budget past",
     options: [
@@ -124,16 +79,6 @@ const questions: Question[] = [
       { text: "Tussen de €15 en €35", value: "15-35" },
       { text: "Meer dan €50", value: "over-50" },
       { text: "Prijs maakt me niet uit als het maar goed werkt", value: "price-no-object" }
-    ]
-  },
-  {
-    id: 11,
-    question: "Als je in de spiegel kijkt, wat zou je het liefst willen zien?",
-    subtitle: "Even helemaal eerlijk naar jezelf kijken.",
-    options: [
-      { text: "Een frisse, egale huid zonder gedoe", value: "fresh-even" },
-      { text: "Minder roodheid of vlekjes", value: "less-redness" },
-      { text: "Meer zelfvertrouwen in hoe ik eruit zie", value: "confidence" }
     ]
   }
 ];
@@ -201,6 +146,8 @@ const foundationRecommendations = [
 ];
 
 export default function FoundationQuizPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -208,7 +155,32 @@ export default function FoundationQuizPage() {
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
-  const handleAnswer = (answer: string, value: string) => {
+  // Initialize question from URL
+  useEffect(() => {
+    const step = searchParams.get('step');
+    if (step === 'results') {
+      setShowResults(true);
+    } else if (step) {
+      const questionNum = parseInt(step) - 1;
+      if (questionNum >= 0 && questionNum < questions.length) {
+        setCurrentQuestion(questionNum);
+      }
+    } else {
+      // No step parameter, set to first question
+      updateURL(0);
+    }
+  }, [searchParams]);
+
+  // Update URL when question changes
+  const updateURL = (questionIndex: number, showResults = false) => {
+    if (showResults) {
+      router.push('/foundation-quiz?step=results', { scroll: false });
+    } else {
+      router.push(`/foundation-quiz?step=${questionIndex + 1}`, { scroll: false });
+    }
+  };
+
+  const handleAnswer = async (answer: string, value: string) => {
     const newAnswer: QuizAnswer = {
       questionId: questions[currentQuestion].id,
       answer,
@@ -218,13 +190,54 @@ export default function FoundationQuizPage() {
     const updatedAnswers = [...answers.filter(a => a.questionId !== newAnswer.questionId), newAnswer];
     setAnswers(updatedAnswers);
 
+    // If this is the last question, save all answers
+    const isLastQuestion = currentQuestion === questions.length - 1;
+    if (isLastQuestion) {
+      try {
+        // Get all answers in the correct order
+        const allAnswers = questions.map(q => {
+          const answer = updatedAnswers.find(a => a.questionId === q.id);
+          return answer?.value || '';
+        });
+
+        const response = await fetch('/api/quiz', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            age: allAnswers[0],             // Age category
+            frustration: allAnswers[1],     // Foundation frustration
+            skinType: allAnswers[2],        // Skin type
+            skinCondition: allAnswers[3],   // Skin condition
+            budget: allAnswers[4],          // Budget
+            referrer: document.referrer
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to save quiz answers');
+        }
+
+        const result = await response.json();
+        if (!result.success) {
+          throw new Error(result.error || 'Failed to save quiz answers');
+        }
+      } catch (error) {
+        console.error('Failed to save answers:', error);
+        // Optionally show an error message to the user, but still continue to results
+      }
+    }
+
     // Smooth transition to next question
     setIsTransitioning(true);
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
+        const nextQuestion = currentQuestion + 1;
+        setCurrentQuestion(nextQuestion);
+        updateURL(nextQuestion);
       } else {
+        // Quiz completed
         setShowResults(true);
+        updateURL(0, true);
       }
       setIsTransitioning(false);
     }, 300);
@@ -234,7 +247,9 @@ export default function FoundationQuizPage() {
     if (currentQuestion > 0) {
       setIsTransitioning(true);
       setTimeout(() => {
-        setCurrentQuestion(currentQuestion - 1);
+        const prevQuestion = currentQuestion - 1;
+        setCurrentQuestion(prevQuestion);
+        updateURL(prevQuestion);
         setIsTransitioning(false);
       }, 300);
     }
@@ -245,6 +260,7 @@ export default function FoundationQuizPage() {
     setAnswers([]);
     setShowResults(false);
     setIsTransitioning(false);
+    updateURL(0);
   };
 
   if (showResults) {
@@ -383,6 +399,7 @@ export default function FoundationQuizPage() {
                           href={foundation.link}
                           target="_blank"
                           rel="noopener noreferrer"
+
                           className={`inline-block px-8 py-4 rounded-lg font-bold text-center transition-all duration-300 ${
                             foundation.rank === 1
                               ? 'bg-green-600 hover:bg-green-700 text-white transform hover:scale-105'
@@ -419,6 +436,7 @@ export default function FoundationQuizPage() {
                 href="https://maycosmetics.nl/products/may-changing-foundation"
                 target="_blank"
                 rel="noopener noreferrer"
+
                 className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
               >
                 🛍️ Direct naar de shop
@@ -456,10 +474,10 @@ export default function FoundationQuizPage() {
         {currentQuestion === 0 && (
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Ontdek in 1 minuut welke foundation het beste is voor jouw huid!
+              Ontdek in 30 seconden welke foundation het beste is voor jouw huid!
             </h1>
             <p className="text-lg text-gray-600">
-              Beantwoord {questions.length} snelle vragen en krijg een persoonlijk advies
+              Beantwoord slechts {questions.length} snelle vragen en krijg een persoonlijk advies
             </p>
           </div>
         )}
