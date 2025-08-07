@@ -5,6 +5,7 @@ import { Button } from "../components/ui/Button";
 import { Container } from "../components/layout/Container";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 interface QuizAnswer {
   questionId: number;
@@ -145,7 +146,7 @@ const foundationRecommendations = [
   }
 ];
 
-export default function FoundationQuizPage() {
+function FoundationQuizContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -574,5 +575,13 @@ export default function FoundationQuizPage() {
         </div>
       </Container>
     </div>
+  );
+}
+
+export default function FoundationQuizPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <FoundationQuizContent />
+    </Suspense>
   );
 } 
